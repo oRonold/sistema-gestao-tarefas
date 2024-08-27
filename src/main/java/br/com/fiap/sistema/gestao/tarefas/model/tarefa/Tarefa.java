@@ -1,5 +1,7 @@
 package br.com.fiap.sistema.gestao.tarefas.model.tarefa;
 
+import br.com.fiap.sistema.gestao.tarefas.model.tarefa.dto.CriarTarefaDTO;
+import br.com.fiap.sistema.gestao.tarefas.model.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,4 +39,15 @@ public class Tarefa {
     @Column(name = "st_tarefa", nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusTarefa statusTarefa;
+
+    @ManyToOne
+    @JoinColumn(name = "cd_usuario", nullable = false)
+    private Usuario usuario;
+
+    public Tarefa(CriarTarefaDTO dto){
+        this.titulo = dto.titulo();
+        this.descricao = dto.descricao();
+        this.statusTarefa = StatusTarefa.PENDENTE;
+    }
+
 }

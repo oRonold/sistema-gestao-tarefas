@@ -1,5 +1,6 @@
 package br.com.fiap.sistema.gestao.tarefas.model.usuario;
 
+import br.com.fiap.sistema.gestao.tarefas.model.tarefa.Tarefa;
 import br.com.fiap.sistema.gestao.tarefas.model.usuario.dto.CriarUsuarioDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -28,6 +29,9 @@ public class Usuario implements UserDetails {
     private String email;
     @Column(name = "ds_senha", nullable = false)
     private String senha;
+
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    private List<Tarefa> tarefas;
 
     public Usuario(CriarUsuarioDTO dto, String senha){
         this.nome = dto.nome();
