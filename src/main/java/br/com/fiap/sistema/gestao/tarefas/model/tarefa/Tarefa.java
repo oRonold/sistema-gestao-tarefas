@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "GESTAO_TAREFA")
 @Getter @Setter @NoArgsConstructor
-@SequenceGenerator(name = "seq_gestao_tarefa", sequenceName = "gestao_tarefa_seq")
+@SequenceGenerator(name = "seq_gestao_tarefa", sequenceName = "gestao_tarefa_seq", allocationSize = 1)
 @EntityListeners(AuditingEntityListener.class)
 public class Tarefa {
 
@@ -57,6 +57,12 @@ public class Tarefa {
         }
         if(dto.descricao() != null){
             this.descricao = dto.descricao();
+        }
+        if(dto.status() != null){
+            this.statusTarefa = StatusTarefa.valueOf(dto.status().toUpperCase());
+        }
+        if(this.statusTarefa == StatusTarefa.CONCLUIDA){
+            this.dataFinalizacao = LocalDate.now();
         }
     }
 

@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "GESTAO_USUARIO")
 @Getter @Setter @NoArgsConstructor
-@SequenceGenerator(name = "seq_gestao_usuario", sequenceName = "gestao_usuario_seq")
+@SequenceGenerator(name = "seq_gestao_usuario", sequenceName = "gestao_usuario_seq", allocationSize = 1)
 public class Usuario implements UserDetails {
 
     @Id

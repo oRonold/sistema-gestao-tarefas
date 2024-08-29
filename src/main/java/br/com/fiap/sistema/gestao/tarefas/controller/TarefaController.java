@@ -16,7 +16,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/tasks")
@@ -47,7 +46,7 @@ public class TarefaController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<DetalhesTarefaDTO> atualizarTarefas(@RequestBody @Valid AtualizarTarefaDTO dto, @PathVariable Long id){
+    public ResponseEntity<DetalhesTarefaDTO> atualizarTarefas(@RequestBody AtualizarTarefaDTO dto, @PathVariable Long id){
         var tarefa = service.atualizarTarefa(dto, id);
         return ResponseEntity.ok().body(new DetalhesTarefaDTO(tarefa));
     }

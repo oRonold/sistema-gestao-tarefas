@@ -1,5 +1,7 @@
 package br.com.fiap.sistema.gestao.tarefas.service;
 
+import br.com.fiap.sistema.gestao.tarefas.infra.exception.TaskCouldNotBeUpdatedException;
+import br.com.fiap.sistema.gestao.tarefas.model.tarefa.StatusTarefa;
 import br.com.fiap.sistema.gestao.tarefas.model.tarefa.Tarefa;
 import br.com.fiap.sistema.gestao.tarefas.model.tarefa.dto.AtualizarTarefaDTO;
 import br.com.fiap.sistema.gestao.tarefas.model.tarefa.dto.CriarTarefaDTO;
@@ -7,8 +9,6 @@ import br.com.fiap.sistema.gestao.tarefas.model.tarefa.dto.ListarTarefasDTO;
 import br.com.fiap.sistema.gestao.tarefas.model.usuario.Usuario;
 import br.com.fiap.sistema.gestao.tarefas.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -42,6 +42,9 @@ public class TarefaService {
 
     public Tarefa atualizarTarefa(AtualizarTarefaDTO dto, Long id){
         var tarefa = repository.getReferenceById(id);
+        if (tarefa.getStatusTarefa() == StatusTarefa.CONCLUIDA){
+            throw new TaskCouldNotBeUpdatedException();
+        }
         tarefa.atualizar(dto);
         return tarefa;
     }
