@@ -1,5 +1,6 @@
 package br.com.fiap.sistema.gestao.tarefas.model.tarefa;
 
+import br.com.fiap.sistema.gestao.tarefas.model.tarefa.dto.AtualizarTarefaDTO;
 import br.com.fiap.sistema.gestao.tarefas.model.tarefa.dto.CriarTarefaDTO;
 import br.com.fiap.sistema.gestao.tarefas.model.usuario.Usuario;
 import jakarta.persistence.*;
@@ -48,6 +49,15 @@ public class Tarefa {
         this.titulo = dto.titulo();
         this.descricao = dto.descricao();
         this.statusTarefa = StatusTarefa.PENDENTE;
+    }
+
+    public void atualizar(AtualizarTarefaDTO dto){
+        if(dto.titulo() != null){
+            this.titulo = dto.titulo();
+        }
+        if(dto.descricao() != null){
+            this.descricao = dto.descricao();
+        }
     }
 
 }
