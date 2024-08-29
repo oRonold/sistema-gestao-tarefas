@@ -18,4 +18,9 @@ public class HandlerException {
         return ResponseEntity.notFound().build();
     }
 
+    @ExceptionHandler(TaskCouldNotBeUpdatedException.class)
+    public ResponseEntity<TarefaJaAbertaDTO> tarefaJaAberta(){
+        return ResponseEntity.badRequest().body(new TarefaJaAbertaDTO("A tarefa já está em andamento"));
+    }
+
 }

@@ -51,4 +51,11 @@ public class TarefaController {
         return ResponseEntity.ok().body(new DetalhesTarefaDTO(tarefa));
     }
 
+    @PutMapping("/{id}/abrir")
+    @Transactional
+    public ResponseEntity<DetalhesTarefaDTO> abrirTarefa(@PathVariable Long id){
+        var tarefa = service.abrirTarefa(id);
+        return ResponseEntity.ok().body(new DetalhesTarefaDTO(tarefa));
+    }
+
 }

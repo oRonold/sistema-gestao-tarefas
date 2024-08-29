@@ -49,4 +49,13 @@ public class TarefaService {
         return tarefa;
     }
 
+    public Tarefa abrirTarefa(Long id){
+        var tarefa = repository.getReferenceById(id);
+        if(tarefa.getStatusTarefa() == StatusTarefa.EM_ANDAMENTO){
+            throw new TaskCouldNotBeUpdatedException();
+        }
+        tarefa.setStatusTarefa(StatusTarefa.EM_ANDAMENTO);
+        return tarefa;
+    }
+
 }
