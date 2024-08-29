@@ -9,4 +9,6 @@ import java.util.List;
 public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 
     List<Tarefa> findAllByUsuario(Usuario usuario);
+
+    Tarefa findByIdAndUsuario(Long id, Usuario usuario);
 }

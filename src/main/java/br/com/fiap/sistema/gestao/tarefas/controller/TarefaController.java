@@ -58,4 +58,18 @@ public class TarefaController {
         return ResponseEntity.ok().body(new DetalhesTarefaDTO(tarefa));
     }
 
+    @PutMapping("/{id}/fechar")
+    @Transactional
+    public ResponseEntity<DetalhesTarefaDTO> fecharTarefa(@PathVariable Long id){
+        var tarefa = service.fecharTarefa(id);
+        return ResponseEntity.ok().body(new DetalhesTarefaDTO(tarefa));
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<Void> excluirTarefa(@PathVariable Long id){
+        service.excluirTarefa(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

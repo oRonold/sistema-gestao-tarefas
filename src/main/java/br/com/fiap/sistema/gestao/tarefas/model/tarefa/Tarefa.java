@@ -58,12 +58,6 @@ public class Tarefa {
         if(dto.descricao() != null){
             this.descricao = dto.descricao();
         }
-        if(dto.status() != null){
-            this.statusTarefa = StatusTarefa.valueOf(dto.status().toUpperCase());
-        }
-        if(this.statusTarefa == StatusTarefa.CONCLUIDA){
-            this.dataFinalizacao = LocalDate.now();
-        }
     }
 
 }

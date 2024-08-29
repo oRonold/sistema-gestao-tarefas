@@ -20,7 +20,12 @@ public class HandlerException {
 
     @ExceptionHandler(TaskCouldNotBeUpdatedException.class)
     public ResponseEntity<TarefaJaAbertaDTO> tarefaJaAberta(){
-        return ResponseEntity.badRequest().body(new TarefaJaAbertaDTO("A tarefa já está em andamento"));
+        return ResponseEntity.badRequest().body(new TarefaJaAbertaDTO("Esta tarefa está em andamento ou está concluida, caso esteja pendente, não pode se tornar concluida"));
+    }
+
+    @ExceptionHandler(TaskDoesNotBelongToUserException.class)
+    public ResponseEntity<TarefaNaoPertenceAoUsuarioDTO> tarefaNaoPertence(){
+        return ResponseEntity.badRequest().body(new TarefaNaoPertenceAoUsuarioDTO("A tarefa não pertence a este Usuário ou não existe"));
     }
 
 }
