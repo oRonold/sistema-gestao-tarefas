@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDate;
 
 public record DetalhesTarefaDTO(
+        Long id,
         String titulo,
         String descricao,
         @JsonFormat(pattern = "dd/MM/yyyy")
@@ -16,6 +17,6 @@ public record DetalhesTarefaDTO(
         StatusTarefa status) {
 
     public DetalhesTarefaDTO(Tarefa tarefa) {
-        this(tarefa.getTitulo(), tarefa.getDescricao(), tarefa.getDataCriacao(), tarefa.getDataFinalizacao(), tarefa.getStatusTarefa());
+        this(tarefa.getId(), tarefa.getTitulo(), tarefa.getDescricao(), tarefa.getDataCriacao(), tarefa.getDataFinalizacao(), tarefa.getStatusTarefa());
     }
 }
