@@ -20,7 +20,7 @@ public class HandlerException {
 
     @ExceptionHandler(TaskCouldNotBeUpdatedException.class)
     public ResponseEntity<TarefaJaAbertaDTO> tarefaJaAberta(){
-        return ResponseEntity.badRequest().body(new TarefaJaAbertaDTO("Esta tarefa está em andamento ou está concluida, caso esteja pendente, não pode se tornar concluida"));
+        return ResponseEntity.badRequest().body(new TarefaJaAbertaDTO("Esta tarefa está pendente ou já está concluida, caso esteja pendente, não pode se tornar concluida"));
     }
 
     @ExceptionHandler(TaskDoesNotBelongToUserException.class)
