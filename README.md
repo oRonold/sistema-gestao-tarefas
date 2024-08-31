@@ -31,3 +31,19 @@ caso o usuário não estiver logado ou se o Token JWT do mesmo estiver expirado 
 - Banco de Dados Oracle
 - Spring Security
 - JWT
+
+## 🗺️ Endpoints
+- Públicas: <br>
+
+POST - /auth/register - cadastra um novo usuario<br>
+POST - /auth/login - realiza autenticação retornando o token<br>
+GET - /public/status - exibe o título de todas as tarefas e o status
+
+- Protegidas:<br>
+
+POST - /tasks - cria uma nova tarefa<br>
+GET - /tasks - retorna as tarefas do usuario<br>
+PUT - /tasks/{id} - atualiza uma tarefa<br>
+PUT - /tasks/{id}/open - atualiza o status da tarefa para EM_ANDAMENTO<br>
+PUT - /tasks/{id}/close - atualiza o status da tarefa CONCLUIDA<br>
+DELETE - /tasks/{id} - exclui uma tarefa
