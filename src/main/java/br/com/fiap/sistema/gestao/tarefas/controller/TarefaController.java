@@ -32,12 +32,6 @@ public class TarefaController {
         return ResponseEntity.created(uri).body(new DetalhesTarefaDTO(tarefa));
     }
 
-    @GetMapping("/public/status")
-    public ResponseEntity<List<ListarTarefasDTO>> buscarTodas(){
-        var page = service.buscarTodasTarefas();
-        return ResponseEntity.ok(page);
-    }
-
     @GetMapping
     public ResponseEntity<List<DetalhesTarefaDTO>> tarefasPessoais(){
         var tarefas = service.retornarTarefasDoUsuario().stream().map(DetalhesTarefaDTO::new).collect(Collectors.toList());
@@ -51,14 +45,14 @@ public class TarefaController {
         return ResponseEntity.ok().body(new DetalhesTarefaDTO(tarefa));
     }
 
-    @PutMapping("/{id}/abrir")
+    @PutMapping("/{id}/open")
     @Transactional
     public ResponseEntity<DetalhesTarefaDTO> abrirTarefa(@PathVariable Long id){
         var tarefa = service.abrirTarefa(id);
         return ResponseEntity.ok().body(new DetalhesTarefaDTO(tarefa));
     }
 
-    @PutMapping("/{id}/fechar")
+    @PutMapping("/{id}/close")
     @Transactional
     public ResponseEntity<DetalhesTarefaDTO> fecharTarefa(@PathVariable Long id){
         var tarefa = service.fecharTarefa(id);
