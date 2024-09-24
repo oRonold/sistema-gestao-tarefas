@@ -1,10 +1,10 @@
 package br.com.fiap.sistema.gestao.tarefas.controller;
 
-import br.com.fiap.sistema.gestao.tarefas.model.dto.TokenDTO;
-import br.com.fiap.sistema.gestao.tarefas.model.usuario.dto.CriarUsuarioDTO;
-import br.com.fiap.sistema.gestao.tarefas.model.usuario.dto.DetalhesUsuarioDTO;
-import br.com.fiap.sistema.gestao.tarefas.model.usuario.dto.LoginUsuarioDTO;
-import br.com.fiap.sistema.gestao.tarefas.service.UsuarioService;
+import br.com.fiap.sistema.gestao.tarefas.domain.dto.TokenDTO;
+import br.com.fiap.sistema.gestao.tarefas.domain.usuario.dto.CriarUsuarioDTO;
+import br.com.fiap.sistema.gestao.tarefas.domain.usuario.dto.DetalhesUsuarioDTO;
+import br.com.fiap.sistema.gestao.tarefas.domain.usuario.dto.LoginUsuarioDTO;
+import br.com.fiap.sistema.gestao.tarefas.infrastructure.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package br.com.fiap.sistema.gestao.tarefas.controller;
 
-import br.com.fiap.sistema.gestao.tarefas.model.tarefa.dto.ListarTarefasDTO;
-import br.com.fiap.sistema.gestao.tarefas.service.TarefaService;
+import br.com.fiap.sistema.gestao.tarefas.domain.tarefa.dto.ListarTarefasDTO;
+import br.com.fiap.sistema.gestao.tarefas.infrastructure.service.TarefaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
